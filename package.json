@@ -1,8 +1,9 @@
 {
   "dependencies": {
+    "async-file": "^2.0.2",
+    "async-request": "^1.2.0",
     "lodash": "^4.17.4",
     "readline-sync": "^1.4.7",
-    "request": "^2.83.0",
     "word-table": "^1.0.3"
   }
 }
