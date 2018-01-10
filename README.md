@@ -1,7 +1,5 @@
 ### 火车票查询
 
-> -g 高铁
-> -d 动车
-> -t 特快
-> -k 快速
-> -z 直达
+> node main.js
+
+![ticket](ticket.jpeg)
