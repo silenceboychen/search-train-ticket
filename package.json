@@ -1,8 +1,8 @@
 {
   "dependencies": {
-    "cli-table-redemption": "^1.0.1",
     "lodash": "^4.17.4",
     "readline-sync": "^1.4.7",
-    "request": "^2.83.0"
+    "request": "^2.83.0",
+    "word-table": "^1.0.3"
   }
 }
