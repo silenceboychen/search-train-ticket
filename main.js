@@ -2,8 +2,21 @@ const request = require('request');
 const _ = require('lodash');
 const fs = require('fs');
 const readlineSync = require('readline-sync');
+const Table = require('cli-table-redemption');
 
-
+var table = new Table({
+  chars: {
+    'top': '═' , 'top-mid': '╤' , 'top-left': '╔' , 'top-right': '╗',
+    'bottom': '═' , 'bottom-mid': '╧' , 'bottom-left': '╚' , 'bottom-right': '╝',
+    'left': '║' , 'left-mid': '╟' , 'mid': '─' , 'mid-mid': '┼',
+    'right': '║' , 'right-mid': '╢' , 'middle': '│'
+  },
+  head: ['车次', '出发站', '到达站', '出发时间', '到达时间', '历时', '特等座', '一等座', '二等座', '高级软卧', '软卧', '动卧', '硬卧', '硬座', '无座', '备注'],
+  colWidths: [6, 8, 8, 10, 10, 6, 8, 8, 8, 10, 6, 6, 6, 6, 6, 20]
+});
+// table.push(
+//   ['车次', '出发站', '到达站', '出发时间', '到达时间', '历时', '特等座', '一等座', '二等座', '高级软卧', '软卧', '动卧', '硬卧', '硬座', '无座', '备注']
+// );
 // request('https://kyfw.12306.cn/otn/resources/js/framework/station_name.js?station_version=1.8955', (err, response, data) => {
 //   if(err) {
 //     console.log(err);
@@ -52,6 +65,11 @@ request(options, (err, response, data) => {
   } else {
     data = JSON.parse(data);
     var arr = data.data.result;
-    console.log(arr[0].split('|'));
+    _.forEach(arr, item => {
+      item = item.split('|');
+      const a = [item[3], item[4], item[5], item[8], item[9], item[10], item[32] || '--', item[31] || '--', item[30] || '--', item[21] || '--', item[23] || '--', item[33] || '--', item[28] || '--', item[29] || '--', item[26] || '--', item[1]];
+      table.push(a);
+    })
+    console.log(table.toString());
   }
 })
